@@ -1,6 +1,7 @@
 package com.example.orderservice;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class WelcomeController {
 
     @GetMapping("/welcome")
-    public String welcome() {
-        return "welcome-order-service";
+    public String welcome(@RequestHeader("order-request") String header) {
+        return "welcome-order-service (header: " + header + ")";
     }
 }
