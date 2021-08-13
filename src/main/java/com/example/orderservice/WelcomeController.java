@@ -13,4 +13,9 @@ public class WelcomeController {
     public String welcome(@RequestHeader("order-request") String header) {
         return "welcome-order-service (header: " + header + ")";
     }
+
+    @GetMapping("/check")
+    public String check() {
+        return "Hi, there. This is message from Order service";
+    }
 }
