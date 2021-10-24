@@ -6,6 +6,7 @@ import com.example.orderservice.dto.OrderDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -22,6 +23,7 @@ public class OrderService {
         orderDto.setTotalPrice(orderDto.getQty() * orderDto.getUnitPrice());
 
         ModelMapper mapper = new ModelMapper();
+        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         orderRepository.save(mapper.map(orderDto, Order.class));
 
         return orderDto;
